@@ -9,6 +9,7 @@ const listingSchema = new Schema({
     description: String,
     Image:{ 
         type: String ,
+        default:"https://unsplash.com/photos/lush-green-hills-surround-dark-blue-lakes-under-cloudy-sky-mN9lPqJifwE",
         set:(v)=>v===""?"https://unsplash.com/photos/lush-green-hills-surround-dark-blue-lakes-under-cloudy-sky-mN9lPqJifwE":v,
     },
     price: Number,
