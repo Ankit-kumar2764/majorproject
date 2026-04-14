@@ -3,6 +3,8 @@ const express = require("express")
 const app = express()
 const mongoose = require("mongoose")
 const Listing = require("./models/listing")
+const path = require("path")
+
 
 
 
@@ -39,7 +41,8 @@ app.get("/listings", async (req, res) => {
     try {
         const data = await Listing.find({});  // MongoDB se data
         console.log(data);                   // terminal me print
-        res.send(data);                      // client ko bhejna
+        res.send(data);  
+        res.render("index.ejs", { data });                    // client ko bhejna
     } catch (err) {
         console.log(err);
         res.status(500).send("Error occurred");
