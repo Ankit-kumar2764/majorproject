@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
     res.send("Hi i am root")
 })
 
-app.get("/listing", async (req, res) => {
+/*app.get("/listing", async (req, res) => {
     let samplelistings =new Listing({
         title: "Beautiful Beach House",
         description: "A stunning beach house with ocean views and modern amenities.",
@@ -34,7 +34,17 @@ app.get("/listing", async (req, res) => {
     res.send("Listing created successfully");
     console.log("Sample listing was saved successfully");
 });
-
+*/
+app.get("/listings", async (req, res) => {
+    try {
+        const data = await Listing.find({});  // MongoDB se data
+        console.log(data);                   // terminal me print
+        res.send(data);                      // client ko bhejna
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Error occurred");
+    }
+});
 
 app.listen(3000, () => {
     console.log(`Server is running on port ${3000}`);
