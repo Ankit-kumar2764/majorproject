@@ -23,6 +23,7 @@ async function Main() {
 
     app.set("view engine", "ejs")
     app.set("views", path.join(__dirname, "views"))
+    app.use(express.urlencoded({ extended: true }))
 
 app.get("/", (req, res) => {
     res.send("Hi i am root")
@@ -41,6 +42,10 @@ app.get("/", (req, res) => {
     console.log("Sample listing was saved successfully");
 });
 */
+
+
+
+//index route
 app.get("/listings", async (req, res) => {
     try {
         const data = await Listing.find({});  // MongoDB se data
@@ -50,6 +55,10 @@ app.get("/listings", async (req, res) => {
         res.status(500).send("Error occurred");
     }
 });
+
+// show route
+app.get("/listings/:id", async (req, res) => {
+    
 
 app.listen(3000, () => {
     console.log(`Server is running on port ${3000}`);
