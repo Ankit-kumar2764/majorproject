@@ -20,6 +20,10 @@ async function Main() {
     await mongoose.connect(MONGO_URI)
     }
 
+
+    app.set("view engine", "ejs")
+    app.set("views", path.join(__dirname, "views"))
+
 app.get("/", (req, res) => {
     res.send("Hi i am root")
 })
@@ -40,9 +44,7 @@ app.get("/", (req, res) => {
 app.get("/listings", async (req, res) => {
     try {
         const data = await Listing.find({});  // MongoDB se data
-        console.log(data);                   // terminal me print
-        res.send(data);  
-        res.render("index.ejs", { data });                    // client ko bhejna
+        res.render("listings/index", { data });                    // client ko bhejna
     } catch (err) {
         console.log(err);
         res.status(500).send("Error occurred");

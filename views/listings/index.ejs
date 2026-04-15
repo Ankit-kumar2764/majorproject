@@ -7,5 +7,12 @@
 </head>
 <body>
     <h3>all listings</h3>
+    <ul>
+    <% for(let listing of data) { %>
+        <li><a href="/listings/<%= listing._id %>"><%= listing.title %></a></li>
+    <% } %>
+</ul>
+
 </body>
 </html>
+
