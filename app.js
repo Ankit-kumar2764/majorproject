@@ -29,6 +29,11 @@ app.get("/", (req, res) => {
     res.send("Hi i am root")
 })
 
+//new route
+app.get("/listings/new", (req, res) => {
+    res.render("listings/new");
+});
+
 /*app.get("/listing", async (req, res) => {
     let samplelistings =new Listing({
         title: "Beautiful Beach House",
