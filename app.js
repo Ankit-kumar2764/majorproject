@@ -29,10 +29,7 @@ app.get("/", (req, res) => {
     res.send("Hi i am root")
 })
 
-//new route
-app.get("/listings/new", (req, res) => {
-    res.render("listings/new");
-});
+
 
 /*app.get("/listing", async (req, res) => {
     let samplelistings =new Listing({
@@ -60,6 +57,13 @@ app.get("/listings", async (req, res) => {
         res.status(500).send("Error occurred");
     }
 });
+
+
+//new route
+app.get("/listings/new", (req, res) => {
+    res.render("listings/new.ejs");
+});
+
 
 // show route
 app.get("/listings/:id", async (req, res) => {
