@@ -29,6 +29,13 @@ app.get("/", (req, res) => {
     res.send("Hi i am root")
 })
 
+//create route
+app.post("/listings", async (req, res) => {
+    const { title, description, image ,price, location, Country } = req.body;
+    const newListing = new Listing({ title, description, image, price, location, Country });
+    await newListing.save();
+    res.redirect("/listings");
+}
 
 
 /*app.get("/listing", async (req, res) => {
