@@ -6,6 +6,7 @@ const Listing = require("./models/listing")
 const path = require("path")
 const methodOverride = require("method-override")
 const ejsMate = require("ejs-mate")
+app.use(express.static(path.join(__dirname, "public"))) 
 
 
 
