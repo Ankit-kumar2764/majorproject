@@ -4,8 +4,12 @@
 }*/
 .navbar{
     height:5rem;
+    background-color: rgb(190, 101, 101)
 }
 .fa-compass{
     font-size: 2rem;
     color: rgb(249, 123, 144);
+}
+.nav-link{
+    color: #222222 !important;
 }
