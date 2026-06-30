@@ -1,4 +1,11 @@
-body{
+/*body{
     background-color: rgb(249, 123, 144);
 
+}*/
+.navbar{
+    height:5rem;
+}
+.fa-compass{
+    font-size: 2rem;
+    color: rgb(249, 123, 144);
 }
