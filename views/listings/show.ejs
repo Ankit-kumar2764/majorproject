@@ -1,5 +1,4 @@
 <%layout ("/layouts/boilerplate")%>
-<body>
     <h3>listing details:</h3>
     <ul>
         <li> <%= listing.title %></li>
@@ -16,4 +15,3 @@
     <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
         <button type="submit">Delete</button>
     </form>
-</body>
