@@ -13,3 +13,21 @@
 .nav-link{
     color: #222222 !important;
 }
+
+/*footer*/
+
+.f-info-links a{
+    text-decoration: none;
+    color: #222222;
+
+}
+
+.f-info-links a:hover{
+    text-decoration: underline;
+
+}
+.f-info{
+    display: flex;
+    height:8rem;
+    background-color: rgb(249, 245, 246);
+}
