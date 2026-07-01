@@ -3,10 +3,19 @@
     <form method="GET" action ="/listings/new">
         <button>create new listing</button>
     </form>
+<% for(let listing of data) {%>
+    <div class="card" style="width: 18rem;">
+  <img src="<%= listing.displayImageUrl || (listing.image ? listing.image.url : listing.Image) %>" class="card-img-top" alt="listing image">
+  <div class="card-body">
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+  </div>
+</div>
+<%}%>
+
     <ul>
     <% for(let listing of data) { %>
         <li><a href="/listings/<%= listing._id %>"><%= listing.title %></a></li>
-        <li><a href="/listings/<%= listing._id %>"><%= listing.title %></a></li>
+       
     <% } %>
     </ul>
 

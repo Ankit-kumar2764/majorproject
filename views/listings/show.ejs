@@ -1,5 +1,6 @@
 <%layout ("/layouts/boilerplate")%>
     <h3>listing details:</h3>
+    <img src="<%= listing.displayImageUrl || (listing.image ? listing.image.url : '') %>" alt="listing image" style="max-width: 20rem;">
     <ul>
         <li> <%= listing.title %></li>
         <li> <%= listing.description %></li>
