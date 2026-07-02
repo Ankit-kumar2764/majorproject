@@ -1,16 +1,24 @@
 <%layout ("/layouts/boilerplate")%>
     <h3>all listings</h3>
-    <form method="GET" action ="/listings/new">
+
+    <div class="row">
+      <form method="GET" action ="/listings/new">
         <button>create new listing</button>
     </form>
-<% for(let listing of data) {%>
+   <% for(let listing of data) {%>
     <div class="card" style="width: 18rem;">
-  <img src="<%= listing.displayImageUrl || (listing.image ? listing.image.url : listing.Image) %>" class="card-img-top" alt="listing image">
+   <img src="<%= listing.displayImageUrl || (listing.image ? listing.image.url : listing.Image) %>" class="card-img-top" alt="listing image">
   <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+
+    <p class="card-text"><%= listing.title %><br/>
+    &#8377;  <%= listing.price.toLocaleString("en-IN") %>/night
+    </p>
   </div>
 </div>
 <%}%>
+
+    </div>
+    
     
 
 
