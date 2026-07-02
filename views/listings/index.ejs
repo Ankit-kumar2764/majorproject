@@ -1,12 +1,12 @@
 <%layout ("/layouts/boilerplate")%>
     <h3>all listings</h3>
 
-    <div class="row">
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 ">
       <form method="GET" action ="/listings/new">
         <button>create new listing</button>
     </form>
    <% for(let listing of data) {%>
-    <div class="card" style="width: 18rem;">
+    <div class="card col" style="width: 18rem;">
    <img src="<%= listing.displayImageUrl || (listing.image ? listing.image.url : listing.Image) %>" class="card-img-top" alt="listing image">
   <div class="card-body">
 
