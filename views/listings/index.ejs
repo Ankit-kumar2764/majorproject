@@ -7,7 +7,9 @@
     </form>  -->
    <% for(let listing of data) {%>
     <div class="card col" style="width: 18rem;">
-   <img src="<%= listing.displayImageUrl || (listing.image ? listing.image.url : listing.Image) %>" class="card-img-top" alt="listing image">
+   <img src="<%= listing.displayImageUrl || (listing.image ? listing.image.url : listing.Image) %>" class="card-img-top" alt="listing image" style="height: 20rem;">
+
+   
   <div class="card-body">
 
     <p class="card-text"><%= listing.title %><br/>
