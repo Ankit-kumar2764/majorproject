@@ -1,7 +1,8 @@
-/*body{
-    background-color: rgb(249, 123, 144);
-
-}*/
+body{
+    
+  font-family: "Plus Jakarta Sans", sans-serif  !important;
+  
+}
 .navbar{
     height:5rem;
     background-color: white !important;
