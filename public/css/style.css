@@ -70,3 +70,11 @@ body{
 .card-text p{
     font-weight: 400 !important;
 }
+/*card effect*/
+.card-img-overlay{
+    opacity: 2;
+}
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}

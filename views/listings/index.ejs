@@ -9,7 +9,12 @@
 
     <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
     <div class="card col">
-   <img src="<%= listing.displayImageUrl || (listing.image ? listing.image.url : listing.Image) %>" class="card-img-top" alt="listing image" style="height: 20rem;">
+   <img src="<%= listing.displayImageUrl || (listing.image ? listing.image.url : listing.Image) %>" 
+   class="card-img-top"
+    alt="listing image"
+     style="height: 20rem;">
+
+     <div class="card-img-overlay">Ankit kumar yadav</div>
 
    
   <div class="card-body">
