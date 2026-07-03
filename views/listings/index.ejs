@@ -6,6 +6,8 @@
         <button>create new listing</button>
     </form>  -->
    <% for(let listing of data) {%>
+
+    <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
     <div class="card col">
    <img src="<%= listing.displayImageUrl || (listing.image ? listing.image.url : listing.Image) %>" class="card-img-top" alt="listing image" style="height: 20rem;">
 
@@ -19,6 +21,7 @@
     </p>
   </div>
 </div>
+</a>
 <%}%>
 
     </div>
