@@ -3,19 +3,38 @@
 
     <h3>create new listing:</h3>
     <form method="POST" action="/listings">
-        <input name="title" type="text" placeholder=" enter title">
-        <br><br>
-        <textarea name="description" placeholder=" enter description"></textarea>
-        <br><br>
-        <input name="Image" type="text" placeholder=" enter image url" >
-        <br><br>
-        <input name="price" type="number" placeholder=" enter price">
-        <br><br>
-        <input name="Country" type="text" placeholder=" enter country">
-        <br><br>
-        <input name="location" type="text" placeholder=" enter location">
-        <br><br>
-        <button type="submit">Add</button>
+
+        <div>
+            <label for="title" class="form-label">Title</label>
+            <input name="title" type="text" class="form-control" placeholder=" enter title">
+        </div>
+        <br>
+        <div>
+            <label for="description" class="form-label">Description</label>
+            <textarea name="description" class="form-control" placeholder=" enter description"></textarea>
+        </div>
+        <br>
+        <div>
+            <label for="image" class="form-label">Image URL</label>
+            <input name="image" type="text" class="form-control" placeholder=" enter image url">
+        </div>
+        <br>
+        <div>
+            <label for="price" class="form-label">Price</label>
+            <input name="price" type="number" class="form-control" placeholder=" enter price">
+        </div>
+        <br>
+        <div>
+            <label for="Country" class="form-label">Country</label>
+            <input name="Country" type="text" class="form-control" placeholder=" enter country">
+        </div>
+        <br>
+        <div>
+            <label for="location" class="form-label">Location</label>
+            <input name="location" type="text" class="form-control" placeholder=" enter location">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-dark">Add</button>
     </form>
 
 </body>

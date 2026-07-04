@@ -4,35 +4,35 @@
 
        <div>
                  <label  for="title" class="form-label">Title</label>
-                 <input name="title" type="text" placeholder=" enter title" value="<%= listing.title %>">
+                 <input name="title" type="text"  class="form-control" placeholder=" enter title" value="<%= listing.title %>">
        </div>
-
+         <br>
        <div> 
                  <label  for="description" class="form-label">Description</label>
-                 <textarea name="description" placeholder=" enter description"><%= listing.description %></textarea>
+                 <textarea name="description" class="form-control" placeholder=" enter description"><%= listing.description %></textarea>
        </div>
-       
+         <br>
         <div>
                 <label  for="image" class="form-label">Image URL</label>
-               <input name="image" type="text" placeholder=" enter image url" value="<%= listing.displayImageUrl || (listing.image ? listing.image.url : '') %>">
+               <input name="image" type="text" class="form-control" placeholder=" enter image url" value="<%= listing.displayImageUrl || (listing.image ? listing.image.url : '') %>">
         </div>
-        
+        <br>
        <div>
             <label  for="price" class="form-label">Price</label>
-             <input name="price" type="number" placeholder=" enter price" value="<%= listing.price %>">
+             <input name="price" type="number" class="form-control" placeholder=" enter price" value="<%= listing.price %>">
     </div>
-        
+        <br>
     <div> 
             <label  for="Country" class="form-label">Country</label>
-            <input name="Country" type="text" placeholder=" enter country" value="<%= listing.Country %>">
+            <input name="Country" type="text" class="form-control" placeholder=" enter country" value="<%= listing.Country %>">
     
     </div>
-           
+        <br>     
 <div>
        <label  for="location" class="form-label">Location</label>
-        <input name="location" type="text" placeholder=" enter location" value="<%= listing.location %>">
+        <input name="location" type="text" class="form-control" placeholder=" enter location" value="<%= listing.location %>">
 </div>
        
-       
-        <button type="submit">Update</button>
+       <br>
+        <button type="submit" class="btn btn-primary">Update</button>
     </form>
