@@ -97,3 +97,16 @@ body{
    background-color:#fe424d !important;
     border: none !important;
 }
+
+.card-img-top{
+    height:30vh;
+}
+
+.btn-primary{
+    background-color: #4cf468 !important;
+    border: none !important;
+}
+.btn-danger{
+    background-color: #fc404c !important;
+    border: none !important;
+}
