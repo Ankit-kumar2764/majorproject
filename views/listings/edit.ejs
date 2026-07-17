@@ -4,24 +4,21 @@
     <div class="col-8 offset-2">
 
     <h3>Edit listing:</h3>
-    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
+    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation">
 
        <div  class="mb-3 ">
                  <label  for="title" class="form-label">Title</label>
-                 <input name="title" type="text"  class="form-control" placeholder=" enter title" value="<%= listing.title %>">
-                 required
+                 <input name="title" type="text"  class="form-control" placeholder=" enter title" value="<%= listing.title %>" required>
        </div>
         
        <div  class="mb-3">  
                  <label  for="description" class="form-label">Description</label>
-                 <textarea name="description" class="form-control" placeholder=" enter description"><%= listing.description %></textarea>
-                 required
+                 <textarea name="description" class="form-control" placeholder=" enter description" required><%= listing.description %></textarea>
        </div>
          
         <div class="mb-3">
                 <label  for="image" class="form-label">Image URL</label>
-               <input name="image" type="text" class="form-control" placeholder=" enter image url" value="<%= listing.displayImageUrl || (listing.image ? listing.image.url : '') %>">
-               required
+               <input name="image" type="text" class="form-control" placeholder=" enter image url" value="<%= listing.displayImageUrl || (listing.image ? listing.image.url : '') %>" required>
         </div>
     
        <div class="mb-3">
@@ -46,3 +43,4 @@
     </form>
     </div>
    </div>
+   
