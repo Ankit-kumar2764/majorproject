@@ -9,33 +9,36 @@
        <div  class="mb-3 ">
                  <label  for="title" class="form-label">Title</label>
                  <input name="title" type="text"  class="form-control" placeholder=" enter title" value="<%= listing.title %>">
+                 required
        </div>
         
        <div  class="mb-3">  
                  <label  for="description" class="form-label">Description</label>
                  <textarea name="description" class="form-control" placeholder=" enter description"><%= listing.description %></textarea>
+                 required
        </div>
          
         <div class="mb-3">
                 <label  for="image" class="form-label">Image URL</label>
                <input name="image" type="text" class="form-control" placeholder=" enter image url" value="<%= listing.displayImageUrl || (listing.image ? listing.image.url : '') %>">
+               required
         </div>
     
        <div class="mb-3">
             <label  for="price" class="form-label">Price</label>
-             <input name="price" type="number" class="form-control" placeholder=" enter price" value="<%= listing.price %>">
+             <input name="price" type="number" class="form-control" placeholder=" enter price" value="<%= listing.price %>" required>
     </div>
 
 <div class="row">
         <div class="mb-3 col-md-4">
             <label  for="Country" class="form-label">Country</label>
-            <input name="Country" type="text" class="form-control" placeholder=" enter country" value="<%= listing.Country %>">
+            <input name="Country" type="text" class="form-control" placeholder=" enter country" value="<%= listing.Country %>" required>
     
     </div>
            
 <div class="mb-3 col-md-8 ">
        <label  for="location" class="form-label">Location</label>
-        <input name="location" type="text" class="form-control" placeholder=" enter location" value="<%= listing.location %>">
+        <input name="location" type="text" class="form-control" placeholder=" enter location" value="<%= listing.location %>" required>
 </div>
 
     </div> 
