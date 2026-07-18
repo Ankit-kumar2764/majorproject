@@ -76,9 +76,13 @@ app.get("/", (req, res) => {
 
 //create route
 app.post("/listings", async (req, res) => { 
-    const newListing = new Listing(normalizeListingImage(req.body));
-    await newListing.save();
-    res.redirect("/listings");
+    try {
+        const newListing = new Listing(normalizeListingImage(req.body));
+        await newListing.save();
+        res.redirect("/listings");
+    } catch (err) {
+        next(err);
+    }
 });
 
 
@@ -156,6 +160,11 @@ app.delete("/listings/:id", async (req, res) => {
     let { id } = req.params;
     await Listing.findByIdAndDelete(id);
     res.redirect("/listings");
+});
+
+app.use((err, req, res, next) => {
+    res.send("Something went wrong");
+
 });
     
 
