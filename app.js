@@ -7,6 +7,7 @@ const path = require("path")
 const methodOverride = require("method-override")
 const ejsMate = require("ejs-mate")
 app.use(express.static(path.join(__dirname, "public"))) 
+const wrapAsync = require("./utils/wrapAsync")
 
 
 
@@ -75,15 +76,12 @@ app.get("/", (req, res) => {
 })
 
 //create route
-app.post("/listings", async (req, res) => { 
-    try {
+app.post("/listings", wrapAsync(async (req, res) => { 
+    
         const newListing = new Listing(normalizeListingImage(req.body));
         await newListing.save();
         res.redirect("/listings");
-    } catch (err) {
-        next(err);
-    }
-});
+}));
 
 
 /*app.get("/listing", async (req, res) => {
