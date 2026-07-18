@@ -8,6 +8,7 @@ const methodOverride = require("method-override")
 const ejsMate = require("ejs-mate")
 app.use(express.static(path.join(__dirname, "public"))) 
 const wrapAsync = require("./utils/wrapAsync")
+const ExpressError = require("./utils/ExpressError")
 
 
 
