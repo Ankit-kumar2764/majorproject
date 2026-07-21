@@ -160,10 +160,13 @@ app.delete("/listings/:id", async (req, res) => {
     await Listing.findByIdAndDelete(id);
     res.redirect("/listings");
 });
+app.all("*", (req, res, next) => {
+    next(new ExpressError("Page Not Found", 404));
+});
 
 app.use((err, req, res, next) => {
-    res.send("Something went wrong");
-
+  let {statuscode,massage} = err;
+  res.status(statuscode).send(massage);
 });
     
 
