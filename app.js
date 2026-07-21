@@ -160,7 +160,7 @@ app.delete("/listings/:id", async (req, res) => {
     await Listing.findByIdAndDelete(id);
     res.redirect("/listings");
 });
-app.all("*", (req, res, next) => {
+app.use((req, res, next) => {
     next(new ExpressError("Page Not Found", 404));
 });
 
