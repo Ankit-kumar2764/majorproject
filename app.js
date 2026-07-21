@@ -165,10 +165,11 @@ app.all("*", (req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  let {statuscode,massage} = err;
-  res.status(statuscode).send(massage);
+    let { statusCode = 500, message = "Something Went Wrong" } = err;
+    res.status(statusCode).send(message);
 });
     
+
 
 app.listen(3000, () => {
     console.log(`Server is running on port ${3000}`);
