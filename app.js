@@ -9,6 +9,7 @@ const ejsMate = require("ejs-mate")
 app.use(express.static(path.join(__dirname, "public"))) 
 const wrapAsync = require("./utils/wrapAsync")
 const ExpressError = require("./utils/ExpressError")
+const {listingSchema} = require("./schema.js")
 
 
 
@@ -50,6 +51,13 @@ async function Main() {
         }
     }
 
+    function ensureValidListingId(req, res, next) {
+        if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+            return next("route")
+        }
+        next()
+    }
+
     async function migrateListingImages() {
         await Listing.deleteMany({
             $and: [
@@ -78,6 +86,8 @@ app.get("/", (req, res) => {
 
 //create route
 app.post("/listings", wrapAsync(async (req, res) => { 
+   let result = listingSchema.validate(req.body);
+   console.log(result);
     
         const newListing = new Listing(normalizeListingImage(req.body));
         await newListing.save();
@@ -102,7 +112,7 @@ app.post("/listings", wrapAsync(async (req, res) => {
 
 
 //index route
-app.get("/listings", async (req, res) => {
+app.get("/listings",wrapAsync( async (req, res) => {
     try {
         const rawData = await Listing.find({});  // MongoDB se data
         const data = rawData.map((listing) => ({
@@ -114,7 +124,7 @@ app.get("/listings", async (req, res) => {
         console.log(err);
         res.status(500).send("Error occurred");
     }
-});
+}));
 
 
 //new route
@@ -124,7 +134,7 @@ app.get("/listings/new", (req, res) => {
 
 
 // show route
-app.get("/listings/:id", async (req, res) => {
+app.get("/listings/:id", ensureValidListingId, wrapAsync(async (req, res) => {
     let { id } = req.params;
     const listing = await Listing.findById(id);
     res.render("listings/show", {
@@ -133,10 +143,10 @@ app.get("/listings/:id", async (req, res) => {
             displayImageUrl: getListingDisplayImageUrl(listing),
         },
     });
-});
+}));
 
 // edit route
-app.get("/listings/:id/edit", async (req, res) => {
+app.get("/listings/:id/edit", ensureValidListingId, wrapAsync(async (req, res) => {
     let { id } = req.params;
     const listing = await Listing.findById(id);
     res.render("listings/edit", {
@@ -145,21 +155,21 @@ app.get("/listings/:id/edit", async (req, res) => {
             displayImageUrl: getListingDisplayImageUrl(listing),
         },
     });
-});
+}));
 
 // update route
-app.put("/listings/:id", async (req, res) => {
+app.put("/listings/:id", ensureValidListingId, wrapAsync(async (req, res) => {
     let { id } = req.params;
     await Listing.findByIdAndUpdate(id, normalizeListingImage(req.body));
     res.redirect(`/listings/${id}`);
-});
+}));
 
 // delete route
-app.delete("/listings/:id", async (req, res) => {
+app.delete("/listings/:id", ensureValidListingId, wrapAsync(async (req, res) => {
     let { id } = req.params;
     await Listing.findByIdAndDelete(id);
     res.redirect("/listings");
-});
+}));
 app.use((req, res, next) => {
     next(new ExpressError("Page Not Found", 404));
 });
