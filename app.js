@@ -9,7 +9,7 @@ const ejsMate = require("ejs-mate")
 app.use(express.static(path.join(__dirname, "public"))) 
 const wrapAsync = require("./utils/wrapAsync")
 const ExpressError = require("./utils/ExpressError")
-const {listingSchema} = require("./schema.js")
+const {listingSchema,reviewSchema } = require("./schema.js")
 const review = require("./models/review")
 
 
@@ -106,6 +106,28 @@ app.post("/listings/:id/reviews", ensureValidListingId, wrapAsync(async (req, re
     await listing.save();
     res.redirect(`/listings/${id}`);
 }));
+
+const validateListing = (req, res, next) => {
+    const { error } = listingSchema.validate(req.body);
+    if (error) {
+        const msg = error.details.map(el => el.message).join(",");
+        throw new ExpressError(msg, 400);
+    }
+    else {
+        next();
+    }
+};
+
+const validateReview = (req, res, next) => {
+    const { error } = reviewSchema.validate(req.body);
+    if (error) {
+        const msg = error.details.map(el => el.message).join(",");
+        throw new ExpressError(msg, 400);
+    }
+    else {
+        next();
+    }
+};
 
 /*app.get("/listing", async (req, res) => {
     let samplelistings =new Listing({
