@@ -10,6 +10,7 @@ app.use(express.static(path.join(__dirname, "public")))
 const wrapAsync = require("./utils/wrapAsync")
 const ExpressError = require("./utils/ExpressError")
 const {listingSchema} = require("./schema.js")
+const review = require("./models/review")
 
 
 
@@ -94,6 +95,17 @@ app.post("/listings", wrapAsync(async (req, res) => {
         res.redirect("/listings");
 }));
 
+
+//review route
+app.post("/listings/:id/reviews", ensureValidListingId, wrapAsync(async (req, res) => {
+    let { id } = req.params;
+    const listing = await Listing.findById(id);
+    const newReview = new review(req.body);
+    listing.reviews.push(newReview);
+    await newReview.save();
+    await listing.save();
+    res.redirect(`/listings/${id}`);
+}));
 
 /*app.get("/listing", async (req, res) => {
     let samplelistings =new Listing({
