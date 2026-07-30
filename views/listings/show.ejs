@@ -49,12 +49,20 @@
     </form>
 
     <hr>
-    <h4> All Reviews</h4>
-    <ul>
+   <p><b> All Reviews</b></p>
+
     <% for(let review of listing.reviews) { %>
-        <li>Rating: <%= review.rating %> - Comment: <%= review.coment %></li>
+        <div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Ankit yadav</h5>
+                    <p class="card-text"><%= review.coment %></p>
+                    <p class="card-text"><%= review.rating %></p>
+                </div>
+            </div>
+        </div>
     <% } %>
-    </ul>
+
 
 </div>
 </div>
